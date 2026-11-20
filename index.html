@@ -71,13 +71,27 @@
   .burger svg{width:22px;height:22px;color:var(--navy)}
 
   /* Hero */
-  .hero{position:relative;min-height:100vh;display:flex;align-items:flex-end;padding:160px 0 70px;color:#fff;overflow:hidden;background:var(--navy-ink)}
-  .hero-bg{position:absolute;inset:0;background:url('https://static.wixstatic.com/media/ca7195_5056f0d1f56a4f6386a1c88a3f11c27d~mv2.jpg') center/cover no-repeat;transform:scale(1.06);animation:slowzoom 18s ease-out forwards}
-  @keyframes slowzoom{to{transform:scale(1)}}
-  .hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(13,19,48,.55) 0%,rgba(13,19,48,.35) 35%,rgba(13,19,48,.92) 100%)}
+  .hero{position:relative;min-height:100vh;display:flex;align-items:center;padding:140px 0 60px;color:#fff;overflow:hidden;
+    background:radial-gradient(900px 600px at 85% 20%,rgba(122,166,58,.22),transparent 60%),radial-gradient(700px 500px at 0% 100%,rgba(60,80,170,.35),transparent 60%),linear-gradient(160deg,#1c2756 0%,#0d1330 70%)}
+  .hero::before{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.04) 1px,transparent 1px);background-size:56px 56px;mask-image:linear-gradient(180deg,#000 0%,transparent 85%);-webkit-mask-image:linear-gradient(180deg,#000 0%,transparent 85%)}
   .hero .wrap{position:relative;z-index:2}
+  .hero-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:60px;align-items:center}
   .hero .eyebrow{color:var(--leaf-2)}
-  .hero h1{color:#fff;font-size:clamp(44px,7vw,92px);max-width:900px;margin:18px 0 22px}
+  .hero h1{color:#fff;font-size:clamp(42px,5.6vw,80px);max-width:700px;margin:18px 0 22px}
+  .collage{position:relative;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:16px;height:520px}
+  .collage figure{position:relative;border-radius:20px;overflow:hidden;box-shadow:0 30px 60px -25px rgba(0,0,0,.6);border:1px solid rgba(255,255,255,.12);animation:fadeup .9s ease both}
+  .collage img{width:100%;height:100%;object-fit:cover;transition:transform .8s ease}
+  .collage figure:hover img{transform:scale(1.05)}
+  .collage figcaption{position:absolute;left:12px;bottom:12px;font-size:12px;font-weight:600;background:rgba(13,19,48,.72);backdrop-filter:blur(6px);padding:6px 11px;border-radius:999px}
+  .collage .c1{grid-row:1/3;animation-delay:.1s}
+  .collage .c1 figcaption{top:12px;bottom:auto}
+  .collage .c2{animation-delay:.25s;margin-top:40px}
+  .collage .c3{animation-delay:.4s;margin-bottom:40px}
+  .now-selling{position:absolute;left:-36px;bottom:36px;z-index:3;display:flex;align-items:center;gap:12px;background:#fff;color:var(--ink);border-radius:16px;padding:14px 18px;box-shadow:0 24px 50px -16px rgba(0,0,0,.5);animation:fadeup .9s .6s ease both}
+  .now-selling small{display:block;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--leaf);font-weight:700}
+  .now-selling b{font-size:14px;color:var(--navy)}
+  .now-selling .dot{width:10px;height:10px;border-radius:50%;background:var(--leaf);box-shadow:0 0 0 5px rgba(122,166,58,.25)}
+  .leaf{position:absolute;right:-26px;top:-26px;width:70px;height:70px;color:var(--leaf);opacity:.9;z-index:0}
   .hero h1 em{font-style:italic;color:var(--leaf-2)}
   .hero p{font-size:18px;max-width:560px;color:rgba(255,255,255,.85)}
   .hero-actions{display:flex;flex-wrap:wrap;gap:14px;margin-top:34px}
@@ -269,6 +283,10 @@
     .mobile-menu.open{transform:none}
     .mobile-menu .close{position:absolute;top:22px;right:22px;width:44px;height:44px;border-radius:12px;background:rgba(255,255,255,.1);display:grid;place-items:center}
     .mobile-menu .close svg{width:22px;height:22px}
+    .hero-grid{grid-template-columns:1fr;gap:50px}
+    .collage{height:420px}
+    .now-selling{left:12px;bottom:-20px}
+    .leaf{right:-8px}
     .about-grid,.promo-grid,.inq-grid,.contact-grid{grid-template-columns:1fr;gap:50px}
     .about-media .float{right:-8px}
     .about-badge{left:-8px}
@@ -280,6 +298,7 @@
   @media (max-width:640px){
     section{padding:80px 0}
     .stats{grid-template-columns:1fr 1fr}
+    .collage{height:340px;gap:10px}
     .stat:nth-child(3){padding-left:0;border-left:0}
     .stat{padding-bottom:18px}
     .grid,.mv,.fields,.cond.show{grid-template-columns:1fr}
@@ -325,15 +344,25 @@
 
 <!-- HERO -->
 <section class="hero" id="home">
-  <div class="hero-bg" role="img" aria-label="Philtown community entrance"></div>
   <div class="wrap">
-    <span class="eyebrow">Philtown Properties, Inc.</span>
-    <h1>Building <em>masterpieces</em>, building communities.</h1>
-    <p>From hillside subdivisions in Laguna and Tagaytay to landmark towers in Bonifacio Global City — homes and communities designed for balanced, sustainable living.</p>
-    <div class="hero-actions">
-      <a href="#projects" class="btn btn-primary">Explore our projects
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-      <a href="#promo" class="btn btn-ghost">See buyer promo</a>
+    <div class="hero-grid">
+      <div class="hero-copy">
+        <span class="eyebrow">Philtown Properties, Inc.</span>
+        <h1>Building <em>masterpieces</em>, building communities.</h1>
+        <p>From hillside subdivisions in Laguna and Tagaytay to landmark towers in Bonifacio Global City — homes and communities designed for balanced, sustainable living.</p>
+        <div class="hero-actions">
+          <a href="#projects" class="btn btn-primary">Explore our projects
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          <a href="#promo" class="btn btn-ghost">See buyer promo</a>
+        </div>
+      </div>
+      <div class="collage" aria-hidden="true">
+        <figure class="c1"><img src="https://static.wixstatic.com/media/ca7195_60125a0ea29c489daf49adc46661e854~mv2.jpeg/v1/fill/w_520,h_760,al_c,q_85/omp.jpg" alt="" /><figcaption>One McKinley Place · BGC</figcaption></figure>
+        <figure class="c2"><img src="https://static.wixstatic.com/media/ca7195_860c47f269214c8e834ae65ba36e558f~mv2.jpg/v1/fill/w_520,h_380,al_c,q_85/seira.jpg" alt="" /><figcaption>Seira model · Mango Grove</figcaption></figure>
+        <figure class="c3"><img src="https://static.wixstatic.com/media/ca7195_d43f43ca8dd54b398934fe4b758c165f~mv2.jpg/v1/fill/w_520,h_380,al_c,q_85/hds.jpg" alt="" /><figcaption>Hacienda del Sol</figcaption></figure>
+        <div class="now-selling"><span class="dot"></span><div><small>Now selling</small><b>Mango Grove &amp; Hacienda del Sol</b></div></div>
+        <svg class="leaf" viewBox="0 0 100 100"><path d="M0 100 C0 40 40 0 100 0 C100 60 60 100 0 100Z" fill="currentColor"/></svg>
+      </div>
     </div>
     <div class="stats">
       <div class="stat"><b data-count="20">0</b><span>Projects developed</span></div>
