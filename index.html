@@ -1,0 +1,791 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Philtown Properties, Inc. | Building Masterpieces</title>
+<meta name="description" content="Philtown Properties, Inc. — Makati-based real estate developer of Makiling Hills, Woodlands, Tagaytay Heights, Mango Grove, Hacienda del Sol and One McKinley Place. House & lot, condominium, and title inquiries." />
+<meta property="og:title" content="Philtown Properties, Inc. — Building Masterpieces" />
+<meta property="og:description" content="Self-contained, sustainable communities for balanced living. Explore completed and on-going Philtown projects." />
+<meta property="og:image" content="https://static.wixstatic.com/media/ca7195_5056f0d1f56a4f6386a1c88a3f11c27d~mv2.jpg" />
+<link rel="icon" type="image/png" href="assets/favicon.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --navy:#1c2756;
+    --navy-2:#141c40;
+    --navy-ink:#0d1330;
+    --leaf:#7aa63a;
+    --leaf-2:#94bf4f;
+    --leaf-soft:#eef5e3;
+    --cream:#f7f6f1;
+    --ink:#1b1f2e;
+    --muted:#626a80;
+    --line:#e4e4dc;
+    --white:#fff;
+    --radius:18px;
+    --shadow:0 20px 50px -20px rgba(20,28,64,.25);
+    --serif:'Fraunces', Georgia, serif;
+    --sans:'Manrope', system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:var(--sans);color:var(--ink);background:var(--cream);line-height:1.6;-webkit-font-smoothing:antialiased}
+  img{display:block;max-width:100%}
+  a{color:inherit;text-decoration:none}
+  button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
+  .wrap{width:min(1200px,92vw);margin-inline:auto}
+  .eyebrow{display:inline-flex;align-items:center;gap:12px;font-size:12px;letter-spacing:.22em;text-transform:uppercase;font-weight:700;color:var(--leaf)}
+  .eyebrow::before{content:"";width:28px;height:1.5px;background:currentColor}
+  h1,h2,h3{font-family:var(--serif);font-weight:500;letter-spacing:-.01em;line-height:1.1;color:var(--navy-ink)}
+  h2{font-size:clamp(32px,4.2vw,52px);margin:14px 0 16px}
+  .lead{color:var(--muted);font-size:17px;max-width:620px}
+  section{padding:110px 0}
+
+  /* Buttons */
+  .btn{display:inline-flex;align-items:center;gap:10px;padding:14px 26px;border-radius:999px;font-weight:600;font-size:15px;transition:.25s ease}
+  .btn-primary{background:var(--leaf);color:#fff;box-shadow:0 10px 24px -10px rgba(122,166,58,.8)}
+  .btn-primary:hover{background:#6a9630;transform:translateY(-2px)}
+  .btn-ghost{border:1.5px solid rgba(255,255,255,.55);color:#fff}
+  .btn-ghost:hover{background:rgba(255,255,255,.12)}
+  .btn-outline{border:1.5px solid var(--line);background:#fff;color:var(--navy)}
+  .btn-outline:hover{border-color:var(--navy)}
+  .btn svg{width:18px;height:18px}
+
+  /* Header */
+  header{position:fixed;inset:0 0 auto 0;z-index:50;transition:.3s ease;padding:14px 0}
+  header.scrolled{background:rgba(255,255,255,.94);backdrop-filter:blur(12px);box-shadow:0 1px 0 var(--line);padding:8px 0}
+  .nav{display:flex;align-items:center;justify-content:space-between;gap:24px}
+  .brand{display:flex;align-items:center;background:#fff;border-radius:12px;padding:6px 12px}
+  header.scrolled .brand{padding:4px 0;background:transparent}
+  .brand img{height:44px;width:auto}
+  .menu{display:flex;gap:30px;font-size:14.5px;font-weight:600;color:#fff}
+  header.scrolled .menu{color:var(--navy)}
+  .menu a{position:relative;opacity:.92}
+  .menu a::after{content:"";position:absolute;left:0;bottom:-6px;height:2px;width:0;background:var(--leaf);transition:.25s}
+  .menu a:hover::after{width:100%}
+  .nav-cta{display:flex;align-items:center;gap:12px}
+  .burger{display:none;width:44px;height:44px;border-radius:12px;background:#fff;align-items:center;justify-content:center}
+  .burger svg{width:22px;height:22px;color:var(--navy)}
+
+  /* Hero */
+  .hero{position:relative;min-height:100vh;display:flex;align-items:flex-end;padding:160px 0 70px;color:#fff;overflow:hidden;background:var(--navy-ink)}
+  .hero-bg{position:absolute;inset:0;background:url('https://static.wixstatic.com/media/ca7195_5056f0d1f56a4f6386a1c88a3f11c27d~mv2.jpg') center/cover no-repeat;transform:scale(1.06);animation:slowzoom 18s ease-out forwards}
+  @keyframes slowzoom{to{transform:scale(1)}}
+  .hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(13,19,48,.55) 0%,rgba(13,19,48,.35) 35%,rgba(13,19,48,.92) 100%)}
+  .hero .wrap{position:relative;z-index:2}
+  .hero .eyebrow{color:var(--leaf-2)}
+  .hero h1{color:#fff;font-size:clamp(44px,7vw,92px);max-width:900px;margin:18px 0 22px}
+  .hero h1 em{font-style:italic;color:var(--leaf-2)}
+  .hero p{font-size:18px;max-width:560px;color:rgba(255,255,255,.85)}
+  .hero-actions{display:flex;flex-wrap:wrap;gap:14px;margin-top:34px}
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);margin-top:70px;border-top:1px solid rgba(255,255,255,.2)}
+  .stat{padding:26px 24px 0 0}
+  .stat + .stat{padding-left:24px;border-left:1px solid rgba(255,255,255,.2)}
+  .stat b{display:block;font-family:var(--serif);font-weight:500;font-size:clamp(30px,3.4vw,44px);color:#fff}
+  .stat span{font-size:13.5px;color:rgba(255,255,255,.7)}
+
+  /* About */
+  .about-grid{display:grid;grid-template-columns:1.05fr 1fr;gap:70px;align-items:center}
+  .about-media{position:relative}
+  .about-media img{border-radius:var(--radius);aspect-ratio:4/5;object-fit:cover;width:100%;box-shadow:var(--shadow)}
+  .about-media .float{position:absolute;right:-28px;bottom:40px;width:46%;border:6px solid var(--cream);border-radius:var(--radius);aspect-ratio:1;object-fit:cover}
+  .about-badge{position:absolute;left:-22px;top:36px;background:var(--navy);color:#fff;border-radius:16px;padding:20px 22px;box-shadow:var(--shadow)}
+  .about-badge b{font-family:var(--serif);font-size:38px;font-weight:500;display:block;line-height:1;color:var(--leaf-2)}
+  .about-badge span{font-size:13px;opacity:.85}
+  .mv{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:34px}
+  .mv-card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:24px}
+  .mv-card h3{font-size:22px;margin-bottom:8px}
+  .mv-card p{color:var(--muted);font-size:14.5px}
+  .mv-icon{width:42px;height:42px;border-radius:12px;background:var(--leaf-soft);color:var(--leaf);display:grid;place-items:center;margin-bottom:14px}
+  .mv-icon svg{width:22px;height:22px}
+
+  /* Promo */
+  .promo{background:var(--navy);color:#fff;position:relative;overflow:hidden}
+  .promo::before{content:"";position:absolute;width:620px;height:620px;border-radius:50%;background:radial-gradient(circle,rgba(122,166,58,.35),transparent 65%);right:-180px;top:-200px}
+  .promo .wrap{position:relative}
+  .promo h2{color:#fff}
+  .promo .lead{color:rgba(255,255,255,.75)}
+  .promo-grid{display:grid;grid-template-columns:1fr 1.1fr;gap:60px;align-items:center}
+  .promo-tag{display:inline-block;background:var(--leaf);color:#fff;font-weight:700;font-size:12px;letter-spacing:.14em;text-transform:uppercase;padding:7px 14px;border-radius:999px;margin-bottom:16px}
+  .appliances{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:32px 0}
+  .appl{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:16px;padding:20px 16px;text-align:center;transition:.25s}
+  .appl:hover{background:rgba(255,255,255,.1);transform:translateY(-3px)}
+  .appl svg{width:34px;height:34px;color:var(--leaf-2);margin:0 auto 10px}
+  .appl span{font-size:14px;font-weight:600}
+  .promo-visual{position:relative}
+  .promo-visual img{border-radius:22px;aspect-ratio:5/4;object-fit:cover;width:100%}
+  .promo-card{position:absolute;left:-30px;bottom:-30px;background:#fff;color:var(--ink);border-radius:18px;padding:22px 24px;box-shadow:0 30px 60px -20px rgba(0,0,0,.45);max-width:290px}
+  .promo-card b{font-family:var(--serif);font-size:26px;font-weight:500;color:var(--navy);display:block;line-height:1.15}
+  .promo-card small{color:var(--muted);font-size:12.5px}
+  .fineprint{font-size:12.5px;color:rgba(255,255,255,.55);margin-top:16px}
+
+  /* Projects */
+  .proj-head{display:flex;justify-content:space-between;align-items:flex-end;gap:30px;flex-wrap:wrap;margin-bottom:40px}
+  .tabs{display:inline-flex;background:#fff;border:1px solid var(--line);border-radius:999px;padding:6px;gap:4px}
+  .tab{padding:12px 22px;border-radius:999px;font-weight:600;font-size:14.5px;color:var(--muted);transition:.25s;display:flex;align-items:center;gap:8px}
+  .tab .count{font-size:12px;background:var(--cream);border-radius:999px;padding:2px 9px;color:var(--navy)}
+  .tab.active{background:var(--navy);color:#fff}
+  .tab.active .count{background:var(--leaf);color:#fff}
+  .filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:26px}
+  .chip{padding:8px 16px;border-radius:999px;border:1px solid var(--line);background:#fff;font-size:13.5px;font-weight:600;color:var(--muted)}
+  .chip.active{border-color:var(--leaf);color:var(--leaf);background:var(--leaf-soft)}
+  .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+  .card{background:#fff;border-radius:var(--radius);overflow:hidden;border:1px solid var(--line);text-align:left;transition:.3s ease;display:flex;flex-direction:column;animation:fadeup .5s ease both}
+  .card:hover{transform:translateY(-6px);box-shadow:var(--shadow)}
+  @keyframes fadeup{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+  .card-img{position:relative;aspect-ratio:4/3;overflow:hidden;background:#dfe3d6}
+  .card-img img{width:100%;height:100%;object-fit:cover;transition:.6s ease}
+  .card:hover .card-img img{transform:scale(1.06)}
+  .status{position:absolute;top:14px;left:14px;font-size:11.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:6px 12px;border-radius:999px;background:#fff;color:var(--navy)}
+  .status.ongoing{background:var(--leaf);color:#fff}
+  .status.soon{background:#f4b740;color:#3a2a00}
+  .card-body{padding:20px 22px 22px;display:flex;flex-direction:column;flex:1}
+  .card-type{font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--leaf)}
+  .card h3{font-size:23px;margin:6px 0 8px}
+  .card p{font-size:14px;color:var(--muted);flex:1}
+  .card-more{margin-top:16px;font-weight:600;font-size:14px;color:var(--navy);display:inline-flex;align-items:center;gap:6px}
+  .card-more svg{width:16px;height:16px;transition:.25s}
+  .card:hover .card-more svg{transform:translateX(4px)}
+
+  /* Modal */
+  .modal{position:fixed;inset:0;z-index:100;display:none;align-items:center;justify-content:center;padding:24px;background:rgba(9,13,32,.7);backdrop-filter:blur(6px)}
+  .modal.open{display:flex}
+  .modal-box{background:#fff;border-radius:22px;max-width:980px;width:100%;max-height:90vh;overflow:auto;position:relative;animation:fadeup .35s ease}
+  .modal-close{position:absolute;top:14px;right:14px;width:42px;height:42px;border-radius:50%;background:#fff;display:grid;place-items:center;box-shadow:0 4px 14px rgba(0,0,0,.15);z-index:3}
+  .modal-close svg{width:20px;height:20px}
+  .gallery-main{aspect-ratio:16/9;background:#e6e8e0;position:relative}
+  .gallery-main img{width:100%;height:100%;object-fit:cover}
+  .gallery-cap{position:absolute;left:16px;bottom:16px;background:rgba(13,19,48,.75);color:#fff;font-size:13px;padding:6px 12px;border-radius:999px}
+  .thumbs{display:flex;gap:10px;padding:14px 26px 0;overflow-x:auto}
+  .thumbs button{flex:0 0 92px;height:64px;border-radius:10px;overflow:hidden;opacity:.55;border:2px solid transparent;transition:.2s}
+  .thumbs button.active{opacity:1;border-color:var(--leaf)}
+  .thumbs img{width:100%;height:100%;object-fit:cover}
+  .modal-body{padding:24px 26px 30px;display:grid;grid-template-columns:1.4fr 1fr;gap:30px}
+  .modal-body h3{font-size:32px;margin:6px 0 10px}
+  .modal-body p{color:var(--muted)}
+  .facts{background:var(--cream);border-radius:16px;padding:20px}
+  .facts dl{display:grid;gap:12px}
+  .facts dt{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);font-weight:700}
+  .facts dd{font-weight:600;color:var(--navy)}
+  .pill-list{display:flex;flex-wrap:wrap;gap:6px;margin-top:4px}
+  .pill-list span{background:#fff;border:1px solid var(--line);border-radius:999px;padding:4px 11px;font-size:13px;font-weight:600}
+  .modal-body .btn{margin-top:18px}
+
+  /* Inquiry */
+  .inquiry{background:#fff}
+  .inq-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:60px}
+  .inq-points{margin-top:30px;display:grid;gap:16px}
+  .inq-point{display:flex;gap:14px;align-items:flex-start}
+  .inq-point i{flex:0 0 40px;height:40px;border-radius:12px;background:var(--leaf-soft);color:var(--leaf);display:grid;place-items:center}
+  .inq-point i svg{width:20px;height:20px}
+  .inq-point b{display:block;color:var(--navy)}
+  .inq-point span{font-size:14px;color:var(--muted)}
+  .form{background:var(--cream);border:1px solid var(--line);border-radius:24px;padding:34px}
+  .types{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:24px}
+  .type{position:relative}
+  .type input{position:absolute;opacity:0;pointer-events:none}
+  .type label{display:flex;flex-direction:column;gap:8px;padding:18px 16px;border-radius:16px;border:1.5px solid var(--line);background:#fff;cursor:pointer;transition:.2s;height:100%}
+  .type label svg{width:26px;height:26px;color:var(--navy)}
+  .type label b{font-size:14.5px;color:var(--navy)}
+  .type label small{font-size:12.5px;color:var(--muted);line-height:1.4}
+  .type input:checked + label{border-color:var(--leaf);background:var(--leaf-soft);box-shadow:0 0 0 3px rgba(122,166,58,.15)}
+  .type input:checked + label svg{color:var(--leaf)}
+  .type input:focus-visible + label{outline:2px solid var(--navy);outline-offset:2px}
+  .fields{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  .field{display:flex;flex-direction:column;gap:6px}
+  .field.full{grid-column:1/-1}
+  .field label{font-size:13px;font-weight:600;color:var(--navy)}
+  .field input,.field select,.field textarea{font:inherit;font-size:15px;padding:13px 15px;border-radius:12px;border:1.5px solid var(--line);background:#fff;color:var(--ink);transition:.2s;width:100%}
+  .field textarea{min-height:110px;resize:vertical}
+  .field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--leaf);box-shadow:0 0 0 3px rgba(122,166,58,.15)}
+  .cond{display:none;grid-column:1/-1;grid-template-columns:1fr 1fr;gap:16px}
+  .cond.show{display:grid}
+  .consent{display:flex;gap:10px;align-items:flex-start;font-size:13px;color:var(--muted);margin-top:18px}
+  .consent input{margin-top:3px;accent-color:var(--leaf)}
+  .form-foot{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-top:22px;flex-wrap:wrap}
+  .form-msg{font-size:14px;font-weight:600}
+  .form-msg.ok{color:#3f7a12}
+  .form-msg.err{color:#b3261e}
+
+  /* Contact */
+  .contact-grid{display:grid;grid-template-columns:1fr 1.1fr;gap:60px;align-items:start}
+  .info-row{display:grid;grid-template-columns:130px 1fr;gap:20px;padding:20px 0;border-bottom:1px solid var(--line)}
+  .info-row dt{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);font-weight:700;padding-top:3px}
+  .info-row dd{font-size:16px;color:var(--ink)}
+  .info-row dd a:hover{color:var(--leaf)}
+  .map{border-radius:22px;overflow:hidden;box-shadow:var(--shadow);aspect-ratio:4/3;background:#e6e8e0}
+  .map iframe{width:100%;height:100%;border:0}
+  .map-actions{display:flex;gap:12px;margin-top:18px;flex-wrap:wrap}
+
+  /* Footer */
+  footer{background:var(--navy-ink);color:rgba(255,255,255,.7);padding:60px 0 30px}
+  .foot-top{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:40px;padding-bottom:40px;border-bottom:1px solid rgba(255,255,255,.1)}
+  .foot-brand{background:#fff;border-radius:14px;padding:12px 16px;display:inline-block}
+  .foot-brand img{height:52px}
+  footer h4{font-family:var(--sans);font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:#fff;margin-bottom:16px}
+  footer ul{list-style:none;display:grid;gap:10px;font-size:14.5px}
+  footer a:hover{color:var(--leaf-2)}
+  .foot-bottom{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;padding-top:26px;font-size:13.5px}
+
+  /* Floating call */
+  .fab{position:fixed;right:24px;bottom:24px;z-index:60;width:62px;height:62px;border-radius:50%;background:var(--leaf);color:#fff;display:grid;place-items:center;box-shadow:0 14px 30px -8px rgba(122,166,58,.8)}
+  .fab::before{content:"";position:absolute;inset:0;border-radius:50%;border:2px solid var(--leaf);animation:ping 2s infinite}
+  @keyframes ping{0%{transform:scale(1);opacity:.8}100%{transform:scale(1.5);opacity:0}}
+  .fab svg{width:26px;height:26px}
+
+  .reveal{opacity:0;transform:translateY(24px);transition:opacity .8s ease,transform .8s ease}
+  .reveal.in{opacity:1;transform:none}
+
+  /* Mobile */
+  .mobile-menu{display:none}
+  @media (max-width:1000px){
+    .menu,.nav-cta .btn{display:none}
+    .burger{display:flex}
+    .mobile-menu{position:fixed;inset:0;z-index:70;background:var(--navy-ink);color:#fff;display:flex;flex-direction:column;justify-content:center;gap:22px;padding:40px;font-family:var(--serif);font-size:32px;transform:translateX(100%);transition:.35s ease}
+    .mobile-menu.open{transform:none}
+    .mobile-menu .close{position:absolute;top:22px;right:22px;width:44px;height:44px;border-radius:12px;background:rgba(255,255,255,.1);display:grid;place-items:center}
+    .mobile-menu .close svg{width:22px;height:22px}
+    .about-grid,.promo-grid,.inq-grid,.contact-grid{grid-template-columns:1fr;gap:50px}
+    .about-media .float{right:-8px}
+    .about-badge{left:-8px}
+    .grid{grid-template-columns:1fr 1fr}
+    .foot-top{grid-template-columns:1fr 1fr}
+    .modal-body{grid-template-columns:1fr}
+    .promo-card{left:16px;bottom:-24px}
+  }
+  @media (max-width:640px){
+    section{padding:80px 0}
+    .stats{grid-template-columns:1fr 1fr}
+    .stat:nth-child(3){padding-left:0;border-left:0}
+    .stat{padding-bottom:18px}
+    .grid,.mv,.fields,.cond.show{grid-template-columns:1fr}
+    .types{grid-template-columns:1fr}
+    .appliances{grid-template-columns:1fr 1fr}
+    .form{padding:22px}
+    .info-row{grid-template-columns:1fr;gap:4px}
+    .foot-top{grid-template-columns:1fr}
+    .tabs{width:100%}
+    .tab{flex:1;justify-content:center;padding:12px 10px}
+  }
+  @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header id="header">
+  <div class="wrap nav">
+    <a href="#home" class="brand" aria-label="Philtown Properties home"><img src="assets/logo.png" alt="Philtown Properties" /></a>
+    <nav class="menu" aria-label="Main">
+      <a href="#about">About</a>
+      <a href="#projects">Projects</a>
+      <a href="#promo">Promo</a>
+      <a href="#inquire">Inquire</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <div class="nav-cta">
+      <a href="#inquire" class="btn btn-primary">Inquire now</a>
+      <button class="burger" id="burger" aria-label="Open menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+    </div>
+  </div>
+</header>
+
+<div class="mobile-menu" id="mobileMenu">
+  <button class="close" id="menuClose" aria-label="Close menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+  <a href="#about">About</a>
+  <a href="#projects">Projects</a>
+  <a href="#promo">Promo</a>
+  <a href="#inquire">Inquire</a>
+  <a href="#contact">Contact</a>
+</div>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-bg" role="img" aria-label="Philtown community entrance"></div>
+  <div class="wrap">
+    <span class="eyebrow">Philtown Properties, Inc.</span>
+    <h1>Building <em>masterpieces</em>, building communities.</h1>
+    <p>From hillside subdivisions in Laguna and Tagaytay to landmark towers in Bonifacio Global City — homes and communities designed for balanced, sustainable living.</p>
+    <div class="hero-actions">
+      <a href="#projects" class="btn btn-primary">Explore our projects
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      <a href="#promo" class="btn btn-ghost">See buyer promo</a>
+    </div>
+    <div class="stats">
+      <div class="stat"><b data-count="20">0</b><span>Projects developed</span></div>
+      <div class="stat"><b data-count="32" data-suffix=" ha">0</b><span>Tagaytay Heights estate</span></div>
+      <div class="stat"><b data-count="43">0</b><span>Storeys — One McKinley Place</span></div>
+      <div class="stat"><b data-count="1600" data-suffix="+">0</b><span>Units at Hacienda del Sol</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="wrap about-grid">
+    <div class="about-media reveal">
+      <img src="https://static.wixstatic.com/media/ca7195_6207eaf485394472a664c863fa1b5d9a~mv2.jpg/v1/fill/w_900,h_1125,al_c,q_80/mango.jpg" alt="Mango Grove community" loading="lazy" />
+      <img class="float" src="https://static.wixstatic.com/media/ca7195_60125a0ea29c489daf49adc46661e854~mv2.jpeg/v1/fill/w_500,h_500,al_c,q_80/omp.jpg" alt="One McKinley Place, BGC" loading="lazy" />
+      <div class="about-badge"><b>20+</b><span>residential, vertical &amp;<br/>industrial projects</span></div>
+    </div>
+    <div class="reveal">
+      <span class="eyebrow">Who we are</span>
+      <h2>A developer with a legacy of landmark communities.</h2>
+      <p class="lead">Philtown Properties, Inc. is a Makati-based real estate developer. We began with Makiling Hills and Woodlands, moved into upscale subdivisions with Tagaytay Heights, and entered the high-end condominium market with One McKinley Place and Fairways Tower in Bonifacio Global City.</p>
+      <div class="mv">
+        <div class="mv-card">
+          <div class="mv-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/></svg></div>
+          <h3>Mission</h3>
+          <p>To be a leading real estate developer of self-contained, sustainable communities with the infrastructure, facilities and services needed for balanced living.</p>
+        </div>
+        <div class="mv-card">
+          <div class="mv-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg></div>
+          <h3>Vision</h3>
+          <p>To be a leading provider of corporate real estate services.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROMO -->
+<section class="promo" id="promo">
+  <div class="wrap promo-grid">
+    <div class="reveal">
+      <span class="promo-tag">Buyer's Promo</span>
+      <span class="eyebrow" style="display:flex">Move-in ready perks</span>
+      <h2>Buy a home, get a<br/>free appliance package.</h2>
+      <p class="lead">Reserve a house &amp; lot or condominium unit and receive brand-new home appliances — so your family can move in and start living from day one.</p>
+      <div class="appliances">
+        <div class="appl"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M5 10h14M9 5v2M9 13v3"/></svg><span>Refrigerator</span></div>
+        <div class="appl"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2"/><circle cx="12" cy="13" r="5"/><path d="M8 5.5h1M11 5.5h1"/></svg><span>Washing Machine</span></div>
+        <div class="appl"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="9" rx="2"/><path d="M6 11h12M7 17l-1 3M12 17v3M17 17l1 3"/></svg><span>Air Conditioner</span></div>
+        <div class="appl"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="13" rx="2"/><path d="M8 21h8M12 17v4"/></svg><span>Smart TV</span></div>
+        <div class="appl"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M7 7V5M17 7V5M7 11h10"/></svg><span>Microwave Oven</span></div>
+        <div class="appl"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 10h14v8a3 3 0 0 1-3 3H8a3 3 0 0 1-3-3v-8z"/><path d="M4 10h16M10 6h4l1 4H9l1-4z"/></svg><span>Rice Cooker</span></div>
+      </div>
+      <a href="#inquire" class="btn btn-primary" data-type="house">Claim the promo
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      <p class="fineprint">Promo inclusions, participating projects and promo period are subject to change and to the terms of your reservation agreement. Ask our sales team for details.</p>
+    </div>
+    <div class="promo-visual reveal">
+      <img src="https://static.wixstatic.com/media/ca7195_860c47f269214c8e834ae65ba36e558f~mv2.jpg/v1/fill/w_1000,h_800,al_c,q_80/seira.jpg" alt="Seira house model at Mango Grove" loading="lazy" />
+      <div class="promo-card"><b>Free appliances</b><small>with every qualified house &amp; lot or condo reservation</small></div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="wrap">
+    <div class="proj-head reveal">
+      <div>
+        <span class="eyebrow">Our portfolio</span>
+        <h2>Projects</h2>
+        <p class="lead">Browse the communities and towers we've completed, and the developments we're building today. Tap any project for photos and details.</p>
+      </div>
+      <div class="tabs" role="tablist">
+        <button class="tab active" role="tab" data-tab="ongoing" aria-selected="true">On-going <span class="count" id="countOngoing">0</span></button>
+        <button class="tab" role="tab" data-tab="completed" aria-selected="false">Completed <span class="count" id="countCompleted">0</span></button>
+      </div>
+    </div>
+    <div class="filters" id="filters"></div>
+    <div class="grid" id="projectGrid"></div>
+  </div>
+</section>
+
+<!-- PROJECT MODAL -->
+<div class="modal" id="modal" aria-hidden="true">
+  <div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="mTitle">
+    <button class="modal-close" id="modalClose" aria-label="Close"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+    <div class="gallery-main"><img id="mMain" alt="" /><span class="gallery-cap" id="mCap"></span></div>
+    <div class="thumbs" id="mThumbs"></div>
+    <div class="modal-body">
+      <div>
+        <span class="card-type" id="mType"></span>
+        <h3 id="mTitle"></h3>
+        <p id="mDesc"></p>
+        <a href="#inquire" class="btn btn-primary" id="mInquire">Inquire about this project</a>
+      </div>
+      <div class="facts"><dl id="mFacts"></dl></div>
+    </div>
+  </div>
+</div>
+
+<!-- INQUIRY -->
+<section class="inquiry" id="inquire">
+  <div class="wrap inq-grid">
+    <div class="reveal">
+      <span class="eyebrow">Inquiry</span>
+      <h2>How can we help you?</h2>
+      <p class="lead">Tell us what you're looking for and our team will get back to you within one business day.</p>
+      <div class="inq-points">
+        <div class="inq-point"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-7 9 7v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg></i><div><b>Buy a House &amp; Lot</b><span>Model houses, lot sizes, pricing and financing options.</span></div></div>
+        <div class="inq-point"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="1"/><path d="M9 6h1M14 6h1M9 10h1M14 10h1M9 14h1M14 14h1M10 22v-4h4v4"/></svg></i><div><b>Buy a Condominium</b><span>Available units, floor plans and payment terms.</span></div></div>
+        <div class="inq-point"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M8 13h8M8 17h5"/></svg></i><div><b>Title Inquiry</b><span>Title release, transfer status and document follow-ups for existing owners.</span></div></div>
+      </div>
+    </div>
+
+    <form class="form reveal" id="inqForm" novalidate>
+      <div class="types" role="radiogroup" aria-label="Inquiry type">
+        <div class="type"><input type="radio" name="inquiry_type" id="tHouse" value="Buy a House & Lot" checked /><label for="tHouse"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-7 9 7v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg><b>House &amp; Lot</b><small>I want to buy a house</small></label></div>
+        <div class="type"><input type="radio" name="inquiry_type" id="tCondo" value="Buy a Condominium" /><label for="tCondo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="1"/><path d="M9 6h1M14 6h1M9 10h1M14 10h1M9 14h1M14 14h1M10 22v-4h4v4"/></svg><b>Condominium</b><small>I want to buy a condo</small></label></div>
+        <div class="type"><input type="radio" name="inquiry_type" id="tTitle" value="Title Inquiry" /><label for="tTitle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M8 13h8M8 17h5"/></svg><b>Title Inquiry</b><small>About my house title</small></label></div>
+      </div>
+
+      <div class="fields">
+        <div class="field"><label for="fName">Full name *</label><input id="fName" name="name" required autocomplete="name" /></div>
+        <div class="field"><label for="fPhone">Mobile number *</label><input id="fPhone" name="phone" type="tel" required placeholder="09XX XXX XXXX" autocomplete="tel" /></div>
+        <div class="field full"><label for="fEmail">Email address *</label><input id="fEmail" name="email" type="email" required autocomplete="email" /></div>
+
+        <!-- Buying (house or condo) -->
+        <div class="cond show" id="condBuy">
+          <div class="field"><label for="fProject">Preferred project</label><select id="fProject" name="preferred_project"></select></div>
+          <div class="field"><label for="fBudget">Budget range</label>
+            <select id="fBudget" name="budget"><option>Below ₱2M</option><option>₱2M – ₱4M</option><option>₱4M – ₱7M</option><option>₱7M – ₱10M</option><option>Above ₱10M</option><option selected>Not sure yet</option></select></div>
+          <div class="field"><label for="fFinance">Payment / financing</label>
+            <select id="fFinance" name="financing"><option>Pag-IBIG financing</option><option>Bank financing</option><option>In-house financing</option><option>Spot cash</option><option selected>Need advice</option></select></div>
+          <div class="field"><label for="fTimeline">When do you plan to buy?</label>
+            <select id="fTimeline" name="timeline"><option>Within 1 month</option><option>1–3 months</option><option>3–6 months</option><option selected>Just exploring</option></select></div>
+          <div class="field full"><label style="display:flex;gap:10px;align-items:center;font-weight:500"><input type="checkbox" name="appliance_promo" value="Yes" checked style="accent-color:var(--leaf);width:auto" /> I'm interested in the free appliance promo</label></div>
+        </div>
+
+        <!-- Title inquiry -->
+        <div class="cond" id="condTitle">
+          <div class="field"><label for="fTProject">Project / subdivision *</label><select id="fTProject" name="title_project"></select></div>
+          <div class="field"><label for="fLot">Block &amp; Lot / Unit no. *</label><input id="fLot" name="block_lot_unit" placeholder="e.g. Blk 14 Lot 7" /></div>
+          <div class="field"><label for="fOwner">Registered buyer / owner name</label><input id="fOwner" name="registered_owner" /></div>
+          <div class="field"><label for="fConcern">Concern</label>
+            <select id="fConcern" name="title_concern"><option>Status of title processing</option><option>Release of title</option><option>Transfer of title to my name</option><option>Certified true copy / documents</option><option>Correction of details on title</option><option>Other title concern</option></select></div>
+        </div>
+
+        <div class="field full"><label for="fMsg">Message</label><textarea id="fMsg" name="message" placeholder="Tell us more about what you need…"></textarea></div>
+      </div>
+
+      <label class="consent"><input type="checkbox" id="fConsent" required /> I agree that Philtown Properties, Inc. may use my information to respond to this inquiry, in line with the Data Privacy Act of 2012.</label>
+
+      <!-- Honeypot -->
+      <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off" />
+
+      <div class="form-foot">
+        <span class="form-msg" id="formMsg" role="status"></span>
+        <button type="submit" class="btn btn-primary" id="submitBtn">Send inquiry
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4z"/></svg></button>
+      </div>
+    </form>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="wrap contact-grid">
+    <div class="reveal">
+      <span class="eyebrow">Visit or call us</span>
+      <h2>Let's talk about your next home.</h2>
+      <dl>
+        <div class="info-row"><dt>Office</dt><dd>3rd Floor BJS Building, BJS Compound, 1869 P. Domingo St., Brgy. Kasilawan, Makati City</dd></div>
+        <div class="info-row"><dt>Landline</dt><dd><a href="tel:+63288006694">(+632) 8800-6694</a></dd></div>
+        <div class="info-row"><dt>Email</dt><dd><a href="mailto:philtownhrd@gmail.com">philtownhrd@gmail.com</a></dd></div>
+        <div class="info-row"><dt>Office hours</dt><dd>Monday to Friday, 8:00 AM – 5:00 PM</dd></div>
+      </dl>
+    </div>
+    <div class="reveal">
+      <div class="map">
+        <iframe title="Philtown Properties office location" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+          src="https://www.google.com/maps?q=BJS+Building,+1869+P.+Domingo+St,+Kasilawan,+Makati+City&z=17&output=embed"></iframe>
+      </div>
+      <div class="map-actions">
+        <a class="btn btn-primary" target="_blank" rel="noopener" href="https://www.google.com/maps/dir/?api=1&destination=BJS+Building,+1869+P.+Domingo+St,+Kasilawan,+Makati+City">Get directions (Google Maps)</a>
+        <a class="btn btn-outline" target="_blank" rel="noopener" href="https://waze.com/ul?q=1869%20P.%20Domingo%20St%2C%20Makati%20City&navigate=yes">Open in Waze</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="foot-top">
+      <div>
+        <span class="foot-brand"><img src="assets/logo.png" alt="Philtown Properties" /></span>
+        <p style="margin-top:18px;max-width:320px;font-size:14.5px">Building self-contained, sustainable communities for balanced living.</p>
+      </div>
+      <div><h4>Explore</h4><ul><li><a href="#about">About us</a></li><li><a href="#projects">Projects</a></li><li><a href="#promo">Buyer's promo</a></li><li><a href="#inquire">Inquire</a></li></ul></div>
+      <div><h4>Inquiries</h4><ul><li><a href="#inquire" data-type="house">Buy a house &amp; lot</a></li><li><a href="#inquire" data-type="condo">Buy a condominium</a></li><li><a href="#inquire" data-type="title">Title inquiry</a></li></ul></div>
+      <div><h4>Contact</h4><ul><li><a href="tel:+63288006694">(+632) 8800-6694</a></li><li><a href="mailto:philtownhrd@gmail.com">philtownhrd@gmail.com</a></li><li>Makati City, Philippines</li></ul></div>
+    </div>
+    <div class="foot-bottom"><span>© <span id="yr"></span> Philtown Properties, Inc. All rights reserved.</span><span>Building masterpieces.</span></div>
+  </div>
+</footer>
+
+<a href="tel:+63288006694" class="fab" aria-label="Call Philtown Properties"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1z"/></svg></a>
+
+<script>
+/* ============ CONFIG ============ */
+const INQUIRY_EMAIL = 'philtownhrd@gmail.com';
+
+/* ============ PROJECT DATA ============ */
+const W = id => `https://static.wixstatic.com/media/ca7195_${id}`;
+const img = (id, w = 800, h = 600) => `${W(id)}/v1/fill/w_${w},h_${h},al_c,q_80/img.jpg`;
+
+const PROJECTS = [
+  // ---------- ON-GOING ----------
+  { name:'Mango Grove', status:'ongoing', type:'House & Lot', category:'Residential',
+    partner:'Joint venture with C-Belle Property Development Corp.',
+    location:'Via SLEX & STAR Tollway — about 45 minutes from BGC and Makati',
+    desc:'A residential community with wide, pedestrian-friendly open spaces, tree-shaded parks and gardens, overlooking Mount Makiling and the Tagaytay Highlands.',
+    models:['Seira','Sarah','Akira'], amenities:['Swimming pool','Basketball court','Play area'],
+    photos:[['5056f0d1f56a4f6386a1c88a3f11c27d~mv2.jpg','Entrance'],['6207eaf485394472a664c863fa1b5d9a~mv2.jpg','Mango Grove'],['860c47f269214c8e834ae65ba36e558f~mv2.jpg','Seira model'],['df503876a0bc4406a02fd076df19fb5e~mv2.png','Sarah model'],['ebca20da0eca4cb590680bc8ca276525~mv2.jpg','Akira model'],['e06d9d56b8d54221b9ef3f05cd03425e~mv2.jpg','Swimming pool'],['73977abd2a094377a22939e6f007f2bf~mv2.jpg','Basketball court'],['cb8b7c799e95461e8acd51f8c7837d9d~mv2.jpg','Play area']] },
+  { name:'Makiling Hills & Woodlands', status:'ongoing', type:'House & Lot', category:'Residential',
+    desc:'Philtown\'s flagship hillside communities, with house-and-lot packages available in established neighborhoods complete with a pool and clubhouse facilities.',
+    models:['Aliza','Hannah'], amenities:['Swimming pool','Clubhouse facility'],
+    photos:[['379c90fc45484404b27c64720f9c1845~mv2.jpg','Entrance'],['be59e1d8479f48d2bed1ca690e034b74~mv2.png','Aliza model'],['ade659919ad94944ad95a7d1e581a3b6~mv2.png','Hannah model'],['6b2595d45f924e9ea9c38b735e2830ad~mv2.jpg','Pool'],['c0463cb7bfc94908ad0bddd0dc4a52dd~mv2.jpg','Facility']] },
+  { name:'Makiling Hills Phase 2', status:'ongoing', type:'House & Lot', category:'Residential',
+    desc:'The next phase of Makiling Hills, expanding the community with new residential lots.',
+    photos:[['77796d8b579a4ed9b6ea0c374e1d9d55~mv2.jpg','Phase 2'],['c76d26c6226648cb972642c2d8339b8c~mv2.jpg','Phase 2'],['04ad23c847ed405cb943e44723ecb9ad~mv2.jpg','Phase 2']] },
+  { name:'Makiling Ridge', status:'ongoing', type:'Land Development', category:'Residential',
+    desc:'A new residential estate currently under land development.',
+    photos:[['91811f87386143229aa400fd6cd3fe87~mv2.jpeg','Land development'],['3cab3a0c0caa4c62bd757e1cbf186ab6~mv2.jpeg','Land development'],['31de7774015547f28086cea6bef890f7~mv2.jpeg','Land development'],['de583dc5bdde432b862565a574a80b48~mv2.jpeg','Land development']] },
+  { name:'Woodlands Phase 2', status:'ongoing', type:'House & Lot', category:'Residential',
+    desc:'Continued development of Woodlands, with the construction of TR4 currently underway.',
+    photos:[['854daa321c724570962d87efe5efd1a5~mv2.jpg','TR4 construction'],['e7f0a03a89a84c5d9156c5fdc42fbcd3~mv2.jpg','TR4 construction']] },
+  { name:'Hacienda del Sol', status:'ongoing', type:'House & Lot', category:'Residential',
+    partner:'Joint venture with Holiday Homes, Inc. (HHI)',
+    desc:'The largest PDS project at 19 hectares, designed for the mid-income market with lot cuts of 60–65 sqm and about 1,600 units upon completion.',
+    models:['Olivia Duplex','Verena 2-Storey'], amenities:['Covered court','Swimming pool','Playground'],
+    facts:{'Land area':'19 hectares','Units (projected)':'≈ 1,600','Lot cuts':'60 – 65 sqm'},
+    photos:[['d43f43ca8dd54b398934fe4b758c165f~mv2.jpg','Bird\'s-eye view'],['9e35b7a189294be2b5e2e68e58b84ab7~mv2.jpg','Gate'],['c9cd33268b7c440f9d7157fa8eb29fe7~mv2.jpg','Olivia Duplex'],['6d19071f88db4ca9bde841418d319e55~mv2.jpg','Verena 2-Storey'],['5ba46dd3f40b48f4b7e816de59637354~mv2.jpg','Covered court'],['d9b9dd80936b4093b27c5a71b5c33c47~mv2.jpg','Swimming pool'],['35ee2178eaa84890ae268397baee6958~mv2.jpg','HHI Arcadia front office']] },
+  { name:'Hacienda del Sol Phase 3', status:'ongoing', type:'Townhouse', category:'Residential',
+    desc:'Two-storey townhouses within Hacienda del Sol.',
+    models:['2-Storey Townhouse'],
+    photos:[['bf9a424a104d47bdb87d0062586615c1~mv2.jpg','Townhouses'],['f1cdd257d2604baf9de206c3a3903bbf~mv2.jpg','Townhouses'],['48b6e92cf5fd44adb2683ae06b63af4b~mv2.jpg','Townhouses'],['5b5330a913774088a7dc7bf34d9c80f7~mv2.jpg','Townhouses'],['6b34d762331247459f6ca982bb6aefe5~mv2.jpg','Townhouses']] },
+  { name:'Hacienda del Sol Phase 5', status:'soon', type:'House & Lot', category:'Residential',
+    desc:'An upcoming phase of Hacienda del Sol, currently for development.',
+    photos:[['9266e68a39a949d6bd45a0ce9ffc9bb8~mv2.jpg','Site'],['c5da56dab72d4224ab68f15917835de5~mv2.jpg','Site'],['6fbdf6d871bd4baf9e174d6ac98279cd~mv2.jpg','Site'],['e5e316dbfdc34fa7b33367a0b253a3d3~mv2.jpg','Site']] },
+  { name:'Lipa Project', status:'soon', type:'House & Lot', category:'Residential', location:'Lipa, Batangas',
+    desc:'A new Philtown community in Lipa, currently for development.',
+    photos:[['25f540ff264c47a6809e8a695f83a26e~mv2.jpg','Site'],['8d4361786cb04cbfbe1d44685901c972~mv2.jpg','Site'],['98d902d5cdad4474b09e31d3058d1be9~mv2.jpg','Site'],['1ce9eb79b68942b1bc628f42d7b9838f~mv2.jpg','Site']] },
+  { name:'Silang Project', status:'soon', type:'House & Lot', category:'Residential', location:'Silang, Cavite',
+    desc:'A new Philtown community in Silang, currently for development.',
+    photos:[['4cec5e7ff8d84081aa3fa7fccaf7752a~mv2.jpg','Site'],['bb40c495ac444b5fae06cb34839027b8~mv2.jpg','Project map']] },
+
+  // ---------- COMPLETED ----------
+  { name:'Glenwood Park', status:'completed', type:'Subdivision', category:'Residential',
+    desc:'A completed horizontal residential development by Philtown.',
+    photos:[['9b9e16e7e16f4b60b4eb93b36a60c5b9~mv2.jpg','Glenwood Park']] },
+  { name:'Ridgemont South', status:'completed', type:'Subdivision', category:'Residential',
+    desc:'A completed residential subdivision, neighbor to Makiling Hills.',
+    photos:[['6a38649426d3462fb600e01afd822f88~mv2.jpg','Entrance gate']] },
+  { name:'Makiling Hills', status:'completed', type:'Subdivision', category:'Residential',
+    desc:'Philtown\'s first community: 11 hectares and about 360 lots. All lots have been sold, with house-and-lot packages still offered.',
+    facts:{'Land area':'11 hectares','Lots':'≈ 360'},
+    photos:[['115729d0fcc64fe88df3f012f9b807c9~mv2.jpg','Makiling Hills'],['c8618f9f7aee49fc9939052c2e7118d8~mv2.jpg','Entrance']] },
+  { name:'Woodlands', status:'completed', type:'Subdivision', category:'Residential',
+    desc:'A completed residential subdivision developed alongside Makiling Hills.',
+    photos:[['96dd9271a812454d96fbd65b34451a55~mv2.jpg','Woodlands']] },
+  { name:'Tagaytay Heights', status:'completed', type:'Upscale Subdivision', category:'Residential', location:'Tagaytay City',
+    desc:'An upscale 32-hectare estate with 700+ lots suited to luxury vacation homes, near the Tagaytay mahogany market and Hall of Justice.',
+    facts:{'Land area':'32 hectares','Lots':'700+'},
+    photos:[['218b4af64d9d4d57b537ddfdb32b1b94~mv2.jpg','Tagaytay Heights'],['58154d091c9e42078d4e041b73d4b49d~mv2.jpg','Tagaytay Heights']] },
+  { name:'PDS-Ibiza 1', status:'completed', type:'Socialized Housing', category:'Residential', soldOut:true,
+    desc:'The first PDS project — 2.5 hectares and 379 lots for the low-cost and socialized housing market. All units sold.',
+    facts:{'Land area':'2.5 hectares','Lots':'379'},
+    photos:[['fafa76bd1b7e41f78af36b9a91069dfd~mv2.jpg','Entrance gate'],['32bae034ad904ca3852fb2357649f2c0~mv2.jpg','House'],['c9a69339f93a456b8fc285bdf536f895~mv2.jpg','Top view'],['2f02cdade6e641bc87b838b473c815cf~mv2.jpg','Top view']] },
+  { name:'PDS-Ibiza 2', status:'completed', type:'Socialized Housing', category:'Residential', soldOut:true,
+    partner:'Joint venture with Holiday Homes, Inc. (HHI)',
+    desc:'A 2.5-hectare project with almost 400 lots for the socialized housing market. Launched in 2015 and fully sold by 2017.',
+    facts:{'Land area':'2.5 hectares','Lots':'≈ 400','Launched':'2015'},
+    photos:[['20773401157d4466b61abf1762863f7e~mv2.png','PDS']] },
+  { name:'One McKinley Place', status:'completed', type:'Condominium', category:'Vertical', location:'Bonifacio Global City, Taguig',
+    partner:'Joint venture with Urban Bank',
+    desc:'A 43-storey high-end residential tower in BGC with over 300 large units, launched in 1997 and still one of the area\'s most highly regarded addresses.',
+    facts:{'Storeys':'43','Units':'300+','Launched':'1997'},
+    photos:[['60125a0ea29c489daf49adc46661e854~mv2.jpeg','One McKinley Place']] },
+  { name:'Fairways Tower', status:'completed', type:'Condominium', category:'Vertical', location:'Bonifacio Global City, Taguig',
+    desc:'A 29-storey residential tower with almost 600 units, launched in 2003 and completed in 2008.',
+    facts:{'Storeys':'29','Units':'≈ 600','Completed':'2008'},
+    photos:[['280f3202998445fb8d6fb84a5fd3b9f1~mv2.jpg','Fairways Tower'],['0b6b5c826c784ef4bbb0b69bf44fb3c9~mv2.jpg','Fairways Tower']] },
+  { name:'Manggahan Village', status:'completed', type:'Residential', category:'Vertical',
+    desc:'A completed Philtown vertical residential project.',
+    photos:[['b72278bac30a4ef1a339fad7d226ddf1~mv2.jpg','Manggahan Village']] },
+  { name:'WH Taft', status:'completed', type:'Residential Building', category:'Vertical',
+    desc:'A completed Philtown building project.',
+    photos:[['74e302a10dbe4d06996fbb353db9f348~mv2.png','WH Taft building']] },
+  { name:'Studio A – Katipunan', status:'completed', type:'Condominium', category:'Vertical', location:'Katipunan, Quezon City',
+    desc:'A completed condominium project along Katipunan.',
+    photos:[['daa4a8952fc44a10a42b1874346b4e27~mv2.jpg','Studio A']] },
+  { name:'Light Industry & Science Park III', status:'completed', type:'Industrial Estate', category:'Industrial',
+    desc:'A 124-hectare industrial park. Philtown sold its 40% stake to joint-venture partner SPPI in 2011.',
+    facts:{'Land area':'124 hectares'},
+    photos:[['ffb6ed5a69984790887aff4cd6fbbb58~mv2.jpg','LISP III']] },
+];
+
+const STATUS_LABEL = { ongoing:'On-going', soon:'For development', completed:'Completed' };
+
+/* ============ PROJECTS UI ============ */
+const grid = document.getElementById('projectGrid');
+const filtersEl = document.getElementById('filters');
+let currentTab = 'ongoing', currentFilter = 'All';
+
+const inTab = p => currentTab === 'completed' ? p.status === 'completed' : p.status !== 'completed';
+document.getElementById('countOngoing').textContent = PROJECTS.filter(p => p.status !== 'completed').length;
+document.getElementById('countCompleted').textContent = PROJECTS.filter(p => p.status === 'completed').length;
+
+function renderFilters(){
+  const cats = ['All', ...new Set(PROJECTS.filter(inTab).map(p => p.category))];
+  filtersEl.innerHTML = cats.length > 2 ? cats.map(c => `<button class="chip ${c===currentFilter?'active':''}" data-f="${c}">${c}</button>`).join('') : '';
+}
+function renderGrid(){
+  const list = PROJECTS.filter(inTab).filter(p => currentFilter === 'All' || p.category === currentFilter);
+  grid.innerHTML = list.map((p, i) => {
+    const idx = PROJECTS.indexOf(p);
+    const label = p.soldOut ? 'Sold out' : STATUS_LABEL[p.status];
+    return `<button class="card" data-i="${idx}" style="animation-delay:${i*50}ms">
+      <div class="card-img"><img src="${img(p.photos[0][0], 640, 480)}" alt="${p.name}" loading="lazy" /><span class="status ${p.status}">${label}</span></div>
+      <div class="card-body"><span class="card-type">${p.type}</span><h3>${p.name}</h3><p>${p.desc}</p>
+      <span class="card-more">View project <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+    </button>`;
+  }).join('');
+}
+document.querySelectorAll('.tab').forEach(t => t.addEventListener('click', () => {
+  document.querySelectorAll('.tab').forEach(x => { x.classList.remove('active'); x.setAttribute('aria-selected','false'); });
+  t.classList.add('active'); t.setAttribute('aria-selected','true');
+  currentTab = t.dataset.tab; currentFilter = 'All';
+  renderFilters(); renderGrid();
+}));
+filtersEl.addEventListener('click', e => {
+  const b = e.target.closest('.chip'); if (!b) return;
+  currentFilter = b.dataset.f; renderFilters(); renderGrid();
+});
+
+/* Modal */
+const modal = document.getElementById('modal');
+let activeProject = null;
+function openProject(p){
+  activeProject = p;
+  const setMain = k => {
+    document.getElementById('mMain').src = img(p.photos[k][0], 1280, 720);
+    document.getElementById('mMain').alt = `${p.name} — ${p.photos[k][1]}`;
+    document.getElementById('mCap').textContent = p.photos[k][1];
+    document.querySelectorAll('#mThumbs button').forEach((b, j) => b.classList.toggle('active', j === k));
+  };
+  document.getElementById('mThumbs').innerHTML = p.photos.length > 1
+    ? p.photos.map((ph, j) => `<button data-k="${j}" aria-label="${ph[1]}"><img src="${img(ph[0], 200, 140)}" alt="" loading="lazy" /></button>`).join('') : '';
+  document.querySelectorAll('#mThumbs button').forEach(b => b.onclick = () => setMain(+b.dataset.k));
+  setMain(0);
+  document.getElementById('mType').textContent = `${p.type} · ${p.soldOut ? 'Sold out' : STATUS_LABEL[p.status]}`;
+  document.getElementById('mTitle').textContent = p.name;
+  document.getElementById('mDesc').textContent = p.desc;
+  let f = '';
+  if (p.location) f += `<div><dt>Location</dt><dd>${p.location}</dd></div>`;
+  if (p.partner) f += `<div><dt>Partnership</dt><dd>${p.partner}</dd></div>`;
+  if (p.facts) Object.entries(p.facts).forEach(([k, v]) => f += `<div><dt>${k}</dt><dd>${v}</dd></div>`);
+  if (p.models) f += `<div><dt>House models</dt><dd class="pill-list">${p.models.map(m => `<span>${m}</span>`).join('')}</dd></div>`;
+  if (p.amenities) f += `<div><dt>Amenities</dt><dd class="pill-list">${p.amenities.map(m => `<span>${m}</span>`).join('')}</dd></div>`;
+  f += `<div><dt>Status</dt><dd>${p.soldOut ? 'Sold out' : STATUS_LABEL[p.status]}</dd></div>`;
+  document.getElementById('mFacts').innerHTML = f;
+  const inq = document.getElementById('mInquire');
+  inq.textContent = p.status === 'completed' ? 'Inquire about a title here' : 'Inquire about this project';
+  modal.classList.add('open'); modal.setAttribute('aria-hidden','false');
+  document.body.style.overflow = 'hidden';
+}
+function closeModal(){ modal.classList.remove('open'); modal.setAttribute('aria-hidden','true'); document.body.style.overflow = ''; }
+grid.addEventListener('click', e => { const c = e.target.closest('.card'); if (c) openProject(PROJECTS[+c.dataset.i]); });
+document.getElementById('modalClose').onclick = closeModal;
+modal.addEventListener('click', e => { if (e.target === modal) closeModal(); });
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+document.getElementById('mInquire').addEventListener('click', () => {
+  const p = activeProject; closeModal();
+  if (p.status === 'completed') { setType('title'); selectOpt('fTProject', p.name); }
+  else { setType(p.type === 'Condominium' ? 'condo' : 'house'); selectOpt('fProject', p.name); }
+});
+
+/* ============ INQUIRY FORM ============ */
+const ongoingNames = PROJECTS.filter(p => p.status !== 'completed').map(p => p.name);
+const allNames = PROJECTS.filter(p => p.category !== 'Industrial').map(p => p.name);
+document.getElementById('fProject').innerHTML = ['Not sure yet — recommend one', ...ongoingNames].map(n => `<option>${n}</option>`).join('');
+document.getElementById('fTProject').innerHTML = ['Select project', ...allNames].map(n => `<option>${n}</option>`).join('');
+function selectOpt(id, name){ const s = document.getElementById(id); [...s.options].forEach(o => { if (o.text === name) s.value = o.value; }); }
+
+const typeMap = { house:'tHouse', condo:'tCondo', title:'tTitle' };
+function setType(t){ document.getElementById(typeMap[t]).checked = true; syncType(); }
+function syncType(){
+  const isTitle = document.getElementById('tTitle').checked;
+  document.getElementById('condBuy').classList.toggle('show', !isTitle);
+  document.getElementById('condTitle').classList.toggle('show', isTitle);
+  document.getElementById('fTProject').required = isTitle;
+  document.getElementById('fLot').required = isTitle;
+}
+document.querySelectorAll('input[name="inquiry_type"]').forEach(r => r.addEventListener('change', syncType));
+document.querySelectorAll('[data-type]').forEach(a => a.addEventListener('click', () => setType(a.dataset.type)));
+
+const form = document.getElementById('inqForm');
+const msg = document.getElementById('formMsg');
+const btn = document.getElementById('submitBtn');
+form.addEventListener('submit', async e => {
+  e.preventDefault();
+  msg.className = 'form-msg'; msg.textContent = '';
+  const isTitle = document.getElementById('tTitle').checked;
+  const req = ['fName','fPhone','fEmail', ...(isTitle ? ['fLot'] : [])];
+  for (const id of req) { const el = document.getElementById(id); if (!el.value.trim()) { el.focus(); msg.className='form-msg err'; msg.textContent='Please fill in all required fields.'; return; } }
+  if (isTitle && document.getElementById('fTProject').selectedIndex === 0) { document.getElementById('fTProject').focus(); msg.className='form-msg err'; msg.textContent='Please select your project.'; return; }
+  if (!/^\S+@\S+\.\S+$/.test(document.getElementById('fEmail').value)) { msg.className='form-msg err'; msg.textContent='Please enter a valid email.'; return; }
+  if (!document.getElementById('fConsent').checked) { msg.className='form-msg err'; msg.textContent='Please agree to the privacy notice.'; return; }
+
+  // Only send fields relevant to the selected inquiry type
+  const data = {};
+  new FormData(form).forEach((v, k) => {
+    const el = form.elements[k];
+    const box = el && el.closest ? el.closest('.cond') : null;
+    if (box && !box.classList.contains('show')) return;
+    data[k] = v;
+  });
+  data._subject = `Website Inquiry: ${data.inquiry_type} — ${data.name}`;
+  data._template = 'table';
+  data._captcha = 'false';
+
+  btn.disabled = true; btn.style.opacity = .7; msg.textContent = 'Sending…';
+  try {
+    const res = await fetch(`https://formsubmit.co/ajax/${INQUIRY_EMAIL}`, {
+      method:'POST', headers:{'Content-Type':'application/json', Accept:'application/json'}, body:JSON.stringify(data)
+    });
+    const out = await res.json();
+    if (!res.ok || String(out.success) !== 'true') throw new Error(out.message || 'Failed');
+    msg.className = 'form-msg ok'; msg.textContent = 'Thank you! Your inquiry has been sent. We\'ll contact you soon.';
+    form.reset(); syncType();
+  } catch (err) {
+    // Fallback: open the visitor's email app with the inquiry pre-filled
+    const body = Object.entries(data).filter(([k]) => !k.startsWith('_')).map(([k, v]) => `${k.replace(/_/g,' ')}: ${v}`).join('\n');
+    window.location.href = `mailto:${INQUIRY_EMAIL}?subject=${encodeURIComponent(data._subject)}&body=${encodeURIComponent(body)}`;
+    msg.className = 'form-msg err'; msg.textContent = 'Opening your email app to send the inquiry…';
+  } finally { btn.disabled = false; btn.style.opacity = 1; }
+});
+
+/* ============ UI BITS ============ */
+const header = document.getElementById('header');
+const onScroll = () => header.classList.toggle('scrolled', window.scrollY > 40);
+window.addEventListener('scroll', onScroll, { passive:true }); onScroll();
+
+const mm = document.getElementById('mobileMenu');
+document.getElementById('burger').onclick = () => mm.classList.add('open');
+document.getElementById('menuClose').onclick = () => mm.classList.remove('open');
+mm.querySelectorAll('a').forEach(a => a.onclick = () => mm.classList.remove('open'));
+
+const io = new IntersectionObserver(es => es.forEach(en => { if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); } }), { threshold:.15 });
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+document.querySelectorAll('[data-count]').forEach(el => {
+  const end = +el.dataset.count, suf = el.dataset.suffix || (end === 20 ? '+' : ''), t0 = performance.now(), dur = 1600;
+  const step = now => { const k = Math.min((now - t0) / dur, 1), v = Math.round(end * (1 - Math.pow(1 - k, 3)));
+    el.textContent = v.toLocaleString() + suf; if (k < 1) requestAnimationFrame(step); };
+  requestAnimationFrame(step);
+});
+
+document.getElementById('yr').textContent = new Date().getFullYear();
+renderFilters(); renderGrid(); syncType();
+</script>
+</body>
+</html>
