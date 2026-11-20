@@ -95,6 +95,27 @@
   .about-badge{position:absolute;left:-22px;top:36px;background:var(--navy);color:#fff;border-radius:16px;padding:20px 22px;box-shadow:var(--shadow)}
   .about-badge b{font-family:var(--serif);font-size:38px;font-weight:500;display:block;line-height:1;color:var(--leaf-2)}
   .about-badge span{font-size:13px;opacity:.85}
+  .journey{position:relative;background:linear-gradient(160deg,var(--navy) 0%,var(--navy-ink) 100%);color:#fff;border-radius:24px;padding:40px 40px 0;overflow:hidden;box-shadow:var(--shadow)}
+  .journey::before{content:"";position:absolute;width:420px;height:420px;border-radius:50%;background:radial-gradient(circle,rgba(122,166,58,.28),transparent 65%);right:-160px;top:-160px}
+  .journey::after{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);background-size:36px 36px;pointer-events:none}
+  .journey > *{position:relative;z-index:1}
+  .journey-kicker{font-size:12px;letter-spacing:.22em;text-transform:uppercase;font-weight:700;color:var(--leaf-2)}
+  .journey-head h3{color:#fff;font-size:clamp(24px,2.4vw,30px);margin:10px 0 28px;max-width:360px}
+  .timeline{list-style:none;position:relative;padding-left:30px}
+  .timeline::before{content:"";position:absolute;left:6px;top:8px;bottom:8px;width:2px;background:linear-gradient(var(--leaf),rgba(122,166,58,.15))}
+  .timeline li{position:relative;padding-bottom:22px}
+  .timeline li::before{content:"";position:absolute;left:-30px;top:5px;width:14px;height:14px;border-radius:50%;background:var(--navy);border:2.5px solid var(--leaf)}
+  .timeline li.now::before{background:var(--leaf);box-shadow:0 0 0 6px rgba(122,166,58,.25)}
+  .timeline .yr{font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--leaf-2)}
+  .timeline b{display:block;font-family:var(--serif);font-weight:500;font-size:19px;margin:2px 0 2px}
+  .timeline p{font-size:13.5px;color:rgba(255,255,255,.65)}
+  .journey-stats{display:grid;grid-template-columns:repeat(3,1fr);margin:8px -40px 0;border-top:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.04)}
+  .journey-stats div{padding:20px 22px}
+  .journey-stats div + div{border-left:1px solid rgba(255,255,255,.12)}
+  .journey-stats b{display:block;font-family:var(--serif);font-weight:500;font-size:30px;color:var(--leaf-2);line-height:1.1}
+  .journey-stats span{font-size:12px;color:rgba(255,255,255,.65);line-height:1.35;display:block;margin-top:4px}
+  @media (max-width:1000px){.journey{order:2}}
+  @media (max-width:640px){.journey{padding:30px 24px 0}.journey-stats{margin:8px -24px 0}.journey-stats div{padding:16px 14px}.journey-stats b{font-size:24px}}
   .mv{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:34px}
   .mv-card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:24px}
   .mv-card h3{font-size:22px;margin-bottom:8px}
@@ -316,7 +337,7 @@
     </div>
     <div class="stats">
       <div class="stat"><b data-count="20">0</b><span>Projects developed</span></div>
-      <div class="stat"><b data-count="32" data-suffix=" ha">0</b><span>Tagaytay Heights estate</span></div>
+      <div class="stat"><b data-count="4">0</b><span>Provinces &amp; cities — Laguna, Cavite, Batangas, Metro Manila</span></div>
       <div class="stat"><b data-count="43">0</b><span>Storeys — One McKinley Place</span></div>
       <div class="stat"><b data-count="1600" data-suffix="+">0</b><span>Units at Hacienda del Sol</span></div>
     </div>
@@ -326,10 +347,23 @@
 <!-- ABOUT -->
 <section id="about">
   <div class="wrap about-grid">
-    <div class="about-media reveal">
-      <img src="https://static.wixstatic.com/media/ca7195_6207eaf485394472a664c863fa1b5d9a~mv2.jpg/v1/fill/w_900,h_1125,al_c,q_80/mango.jpg" alt="Mango Grove community" loading="lazy" />
-      <img class="float" src="https://static.wixstatic.com/media/ca7195_60125a0ea29c489daf49adc46661e854~mv2.jpeg/v1/fill/w_500,h_500,al_c,q_80/omp.jpg" alt="One McKinley Place, BGC" loading="lazy" />
-      <div class="about-badge"><b>20+</b><span>residential, vertical &amp;<br/>industrial projects</span></div>
+    <div class="journey reveal">
+      <div class="journey-head">
+        <span class="journey-kicker">Our journey</span>
+        <h3>Decades of building across Luzon</h3>
+      </div>
+      <ol class="timeline">
+        <li><span class="yr">The beginning</span><b>Makiling Hills &amp; Woodlands</b><p>Our first hillside residential communities in Laguna.</p></li>
+        <li><span class="yr">1997</span><b>One McKinley Place, BGC</b><p>43-storey luxury tower, a joint venture with Urban Bank.</p></li>
+        <li><span class="yr">2003 – 2008</span><b>Fairways Tower, BGC</b><p>29 storeys and almost 600 units, launched and completed.</p></li>
+        <li><span class="yr">2015 – 2017</span><b>PDS-Ibiza 2</b><p>Socialized housing with Holiday Homes, Inc., sold out in two years.</p></li>
+        <li class="now"><span class="yr">Today</span><b>Mango Grove · Hacienda del Sol · Lipa · Silang</b><p>New communities for every stage of life.</p></li>
+      </ol>
+      <div class="journey-stats">
+        <div><b>20+</b><span>Projects</span></div>
+        <div><b>3</b><span>Segments<br/>socialized · mid · upscale</span></div>
+        <div><b>2</b><span>Industrial<br/>estates</span></div>
+      </div>
     </div>
     <div class="reveal">
       <span class="eyebrow">Who we are</span>
